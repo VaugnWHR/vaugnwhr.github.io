@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html >
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+       
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+            background-image: url("Assets/login-bg.jpeg") ;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 300px;
+            height:400px;
+            background-color: rgb(180, 178, 178);
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .header {
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .form-group {
+            margin-bottom: 45px;
+            width:95%;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #6FA81C;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #81a748;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<!-- Login Form-->
+<div class="container">
+    <!-- Header portion, contains logo image-->
+    <div class="header">
+      <img src="Assets/logo.png" height="100px" width="280px"/>  
+    </div>
+<!-- Inputs, seperated using divs to make spacing easier-->
+    <div class="form-group">   
+        <input type="text" id="username" placeholder="Username Input" required>
+    </div>
+
+    <div class="form-group">
+        <input type="password" id="password" placeholder="Password Input" required>
+    </div>
+<!-- Login button-->
+    <button onclick="login()">Login</button>
+<!-- Error message for login requirements-->
+    <div class="error-message" id="error-message"></div>
+</div>
+
+<script>
+    // Constants for sample username and password
+    const USERNAME = "vaugn";
+    const PASSWORD = "Ballerz6";
+    
+    // Track login attempts
+    let attempts = 0;
+
+    function login() {
+        // Retrieve input values
+        const usernameInput = document.getElementById("username").value;
+        const passwordInput = document.getElementById("password").value;
+
+        // Validation and login logic
+        if (usernameInput === USERNAME && passwordInput === PASSWORD) {
+            window.location.href = "products.html"; // Redirect to products page on success
+        } else {
+            attempts++;
+            document.getElementById("error-message").innerText = "Incorrect username or password.";
+
+            if (attempts >= 3) {
+                window.location.href = "error.html"; // Redirect to error page after 3 attempts
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

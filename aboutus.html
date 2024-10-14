@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoe Store</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+      
+            display: flex;
+            background-color:#f7f591;
+        }
+
+        
+        .sidebar {
+            width: 200px;
+            background-color: #8d85857c;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            height: 100vh; 
+            top:0; 
+            
+        
+        }
+
+        .sidebar h2 {
+            text-align: center;
+        }
+
+        .sidebar button {
+            width: 100%;
+            margin: 5px 0;
+            padding: 10px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .container{
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .box1{
+            padding-left: 2px;
+            padding-right: 30px;
+            margin-top: 20px;
+        }
+
+        .box2{
+            border: 2px solid black;
+            border-radius: 2%;
+            width:1200px;
+            height: max-content;
+            margin-top:20px;
+           
+        }
+        .box2 form{
+            padding: 20px;
+        }
+
+        form input{
+            width:min-content;
+        }
+
+        .box3{
+            width: 100%;
+            border:2px solid black;
+            border-radius: 2%;
+            text-align: center;
+            background-color: #f7f591;
+        }
+        .box3 a{
+            color: #531414;
+            
+        }
+
+        .box4{
+            width:100%;
+            padding: 20px;
+            background-color: #531414;
+
+        }
+        
+        .box5{
+            width:100%;
+
+        }
+    </style>
+    </head>
+
+    <body>
+
+       <div class="sidebar">
+            <a href="index.html">Login</a>
+            <a href="products.html">Products</a>
+    </div>
+
+    <div class="container">
+        <div class=" box1">
+            <img src=" Assets/portrait.jpg" height="400px" width="400px">
+        </div>
+        <div class="box2">
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" value="Juvaugn Foster" readonly><br><br>
+
+                <label for="name">ID Number:</label>
+                <input type="text" id="idnum" value="2307320" readonly><br><br>
+        
+                <label for="email">Email</label>
+                <input type="email" id="email" value="juvaugn.foster0@gmail.com" readonly><br><br>
+        
+                <label for="idNumber">Module Code:</label>
+                <input type="text" id="modcode" value="CIT2011" readonly><br><br>
+        
+                <label for="school">Asignment 2:</label>
+                <input type="text" id="assign" value="Ecommerce" readonly><br><br>
+        
+                <label for="food">Class Time:</label>
+                <input type="text" id="class" value="Tuesday, 6-8 pm" readonly><br><br>
+        
+            </form>
+        </div>
+
+        <div class="box3"> 
+            <a href="mailto:2307320@utech.edu.jm?subject=Feedback">Want to provide feedback?</a>
+        </div>
+
+        <div class="box4">
+            <center>
+            <img src="Assets/logo.png" height="300px" width="800px"/>
+        </center>
+    </div>
+
+        <div class="box5">
+            <footer style="background-color: #f7f591; color: #531414; text-align: center; padding: 10px; ">
+                <p>&copy; 2024 Juvaugn Foster. All rights reserved.</p>
+            </footer>
+        </div>
+    </div>
+    </body>
+    </html>
