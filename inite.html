@@ -1,0 +1,129 @@
+<!--@copyright ARDILEK-vaugn-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INV-VAL-DAY</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .gradient-background {
+      background: rgb(255, 208, 229);
+      background: linear-gradient(180deg, rgba(255, 208, 229, 1) 0%, rgba(255, 232, 242, 1) 36%, rgba(255, 255, 255, 1) 100%);
+    }
+
+    .bounce2 {
+      animation: bounce2 2s ease infinite;
+    }
+
+    @keyframes bounce2 {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-20px);
+      }
+      60% {
+        transform: translateY(-10px);
+      }
+    }
+  </style>
+</head>
+<body class="gradient-background">
+  <div class="flex items-center justify-center h-screen">
+    <div class="flex flex-col items-center p-4">
+      <img id="imageDisplay" src="./images/image1.gif" alt="Cute kitten with flowers" class="rounded-md h-[300px]" style="object-fit: cover;" />
+      <h2 id="valentineQuestion" class="text-4xl font-bold italic text-[#bd1e59] my-4">Will you be my Valentine?</h2>
+      <div class="flex gap-4 pt-[20px] items-center" id="responseButtons">
+        <button id="yesButton"
+          class="bounce2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-[20px] font-medium disabled:pointer-events-none disabled:opacity-50 hover:bg-green-400 min-h-12 min-w-[75px] px-4 py-2 bg-green-500 text-white transition">
+          Yes
+        </button>
+        <button id="noButton"
+          class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-[20px] font-medium transition disabled:pointer-events-none disabled:opacity-50 hover:bg-red-700 h-12 min-w-[75px] w-auto px-4 py-2 bg-red-500 text-white">
+          No
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add the audio element -->
+  <audio id="background-music" src="assets_0/2bgm_.mp3" preload="auto"></audio>
+
+  <script type="module">
+    import confetti from 'https://cdn.skypack.dev/canvas-confetti';
+    const yesButton = document.getElementById('yesButton');
+    const noButton = document.getElementById('noButton');
+    const imageDisplay = document.getElementById('imageDisplay');
+    const valentineQuestion = document.getElementById('valentineQuestion');
+    const responseButtons = document.getElementById('responseButtons');
+  
+    let noClickCount = 0;
+    let buttonHeight = 48; 
+    let buttonWidth = 80;
+    let fontSize = 20; 
+    const imagePaths = [
+      "./images/image1.gif",
+      "./images/image2.gif",
+      "./images/image3.gif",
+      "./images/image4.gif",
+      "./images/image5.gif",
+      "./images/image6.gif",
+      "./images/image7.gif"
+    ];
+  
+    noButton.addEventListener('click', function() {
+      if (noClickCount < 13) {
+        noClickCount++;
+        imageDisplay.src = imagePaths[noClickCount];
+      }
+    });
+  
+    yesButton.addEventListener('click', () => {
+      imageDisplay.src = './images/image7.gif'; 
+      valentineQuestion.textContent = "Yayyy!! :3"; 
+      responseButtons.style.display = 'none'; 
+      confetti(); 
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const noButton = document.getElementById('noButton');
+      const buttonRect = noButton.getBoundingClientRect();
+      const buttonWidth = buttonRect.width;
+      const buttonHeight = buttonRect.height;
+    
+      document.addEventListener('mousemove', function(event) {
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
+        const buttonX = noButton.offsetLeft + buttonWidth / 2;
+        const buttonY = noButton.offsetTop + buttonHeight / 2;
+        const distX = mouseX - buttonX;
+        const distY = mouseY - buttonY;
+        const distance = Math.sqrt(distX * distX + distY * distY);
+    
+        if (distance < 40) { 
+          const angle = Math.atan2(distY, distX);
+          const moveX = Math.cos(angle) * 30; 
+          const moveY = Math.sin(angle) * 30; 
+          const newButtonX = noButton.offsetLeft - moveX;
+          const newButtonY = noButton.offsetTop - moveY;
+    
+         
+          const maxX = window.innerWidth - buttonWidth;
+          const maxY = window.innerHeight - buttonHeight;
+          noButton.style.position = 'absolute';
+          noButton.style.left = Math.min(Math.max(newButtonX, 0), maxX) + 'px';
+          noButton.style.top = Math.min(Math.max(newButtonY, 0), maxY) + 'px';
+        }
+      });
+
+      
+      const audio = document.getElementById("background-music");
+      audio.volume = 0.5; 
+      audio.play();
+    });
+  </script>  
+</body>
+<!--@copyright ARDILEK-vaugn-->
+</html>
