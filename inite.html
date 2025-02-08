@@ -77,6 +77,15 @@
       if (noClickCount < 13) {
         noClickCount++;
         imageDisplay.src = imagePaths[noClickCount];
+        buttonHeight += 35; // Increase height by 5px on each click
+        buttonWidth += 35;
+        fontSize += 25; // Increase font size by 1px on each click
+        yesButton.style.height = `${buttonHeight}px`; // Update button height
+        yesButton.style.width = `${buttonWidth}px`;
+        yesButton.style.fontSize = `${fontSize}px`; // Update font size
+        if (noClickCount < 13) {
+          noButton.textContent = ["No", "Are you sure?", "Pookie please", "Don't do this to me :(", "You're breaking my heart", "I'm gonna cry...","Chill on me","Try something else","Work it out","Nuhuhuhuh", "Don't be like that", "The Yes is a much better button", "DISABLED"][noClickCount];
+        }
       }
     });
   
